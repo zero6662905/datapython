@@ -1,11 +1,20 @@
-import numpy as np
+import pandas as pd
 
-array1 = np.random.randint(-10, 11, (4, 4))
-array2 = np.random.randint(-10, 11, (4, 4))
-array3 = np.random.randint(-10, 11, (4, 4))
+data = {
+    'Product': ['Laptop', 'Smartphone', 'Tablet'],
+    'Price': [1200, 800, 400],
+    'Stock': [50, 150, 200]
+}
 
-combined_array = np.stack((array1, array2, array3))
+df = pd.DataFrame(data)
 
-print("Об'єднаний масив з новою віссю:\n", combined_array)
+new_row = pd.DataFrame([{
+    'Product': 'USB Hub',
+    'Price': 40,
+    'Stock': 150,
+    'Warranty': '2 years'
+}])
 
-assert combined_array.shape == (3, 4, 4)
+df = pd.concat([df, new_row], ignore_index=True)
+
+print(df)
