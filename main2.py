@@ -1,20 +1,20 @@
-import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
-data = {
-    'Product': ['Laptop', 'Smartphone', 'Tablet'],
-    'Price': [1200, 800, 400],
-    'Stock': [50, 150, 200]
-}
+x = np.linspace(0, 10, 1000)
+y = np.sin(x) * np.cos(x)
 
-df = pd.DataFrame(data)
+plt.figure(figsize=(12, 6))
 
-new_row = pd.DataFrame([{
-    'Product': 'USB Hub',
-    'Price': 40,
-    'Stock': 150
-}])
+plt.plot(x, y, label='y = sin(x) * cos(x)')
 
-df = pd.concat([df, new_row], ignore_index=True)
+plt.title('Лінійний графік функції y = sin(x) * cos(x)')
+plt.xlabel('x')
+plt.ylabel('y')
 
-print(df)
+plt.legend()
+plt.grid(True)
 
+plt.tight_layout()
+
+plt.show()

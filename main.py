@@ -1,20 +1,25 @@
-import pandas as pd
+import matplotlib.pyplot as plt
 
-data = {
-    'Product': ['Laptop', 'Smartphone', 'Tablet'],
-    'Price': [1200, 800, 400],
-    'Stock': [50, 150, 200]
-}
+weeks = ['Тиждень 1', 'Тиждень 2', 'Тиждень 3', 'Тиждень 4']
 
-df = pd.DataFrame(data)
+traffic = [1500, 1600, 1700, 1800]
 
-new_row = pd.DataFrame([{
-    'Product': 'USB Hub',
-    'Price': 40,
-    'Stock': 150,
-    'Warranty': '2 years'
-}])
+sales_product_a = [300, 350, 400, 450]
+sales_product_b = [200, 250, 300, 350]
+sales_product_c = [100, 150, 200, 250]
 
-df = pd.concat([df, new_row], ignore_index=True)
+plt.figure(figsize=(10, 6))
 
-print(df)
+plt.plot(weeks, traffic, linestyle='-', marker='o', label='Веб-трафік')
+
+plt.plot(weeks, sales_product_a, linestyle='--', marker='s', label='Продажі продукту A')
+plt.plot(weeks, sales_product_b, linestyle='-.', marker='^', label='Продажі продукту B')
+plt.plot(weeks, sales_product_c, linestyle=':', marker='d', label='Продажі продукту C')
+
+plt.title('Щотижнева активність веб-трафіку та продажів')
+plt.xlabel('Тижні')
+plt.ylabel('Кількість')
+plt.legend()
+plt.grid(True)
+
+plt.show()
